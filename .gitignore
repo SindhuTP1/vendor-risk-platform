@@ -2,13 +2,10 @@
 venv/
 
 __pycache__/
-
 *.pyc
 
-*.db
-
-.env
+vendor_risk.db
 
 .vscode/
 
-reports/generated/
+.env
