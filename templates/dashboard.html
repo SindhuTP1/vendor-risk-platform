@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Vendor Risk Platform</title>
+</head>
+
+<body>
+
+<h1>Vendor Risk Dashboard</h1>
+
+<table border="1">
+
+<tr>
+<th>Vendor ID</th>
+<th>Vendor Name</th>
+<th>Risk Level</th>
+</tr>
+
+{% for vendor in vendors %}
+
+<tr>
+<td>{{ vendor.vendor_id }}</td>
+<td>{{ vendor.vendor_name }}</td>
+<td>{{ vendor.risk_level }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
