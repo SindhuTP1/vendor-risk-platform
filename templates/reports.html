@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Reports</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Risk Report</h1>
+</div>
+
+<div class="card">
+
+<h2>Total Vendors: {{ total }}</h2>
+
+<h2>High Risk: {{ high }}</h2>
+
+<h2>Medium Risk: {{ medium }}</h2>
+
+<h2>Low Risk: {{ low }}</h2>
+
+<h2>Compliance Percentage: {{ compliance_percent }}%</h2>
+
+</div>
+
+<a href="/">Back To Dashboard</a>
+
+</body>
+</html>

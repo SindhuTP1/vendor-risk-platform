@@ -2,30 +2,144 @@
 <html>
 
 <head>
-<title>Vendor Risk Platform</title>
+
+    <title>VendorShield Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 <body>
 
-<h1>Vendor Risk Dashboard</h1>
+<div class="header">
+    <h1>VendorShield Dashboard</h1>
+</div>
 
-<table border="1">
+<!-- Navigation Menu -->
+<div style="padding:15px; background:#f0f0f0;">
 
-<tr>
-<th>Vendor ID</th>
-<th>Vendor Name</th>
-<th>Risk Level</th>
-</tr>
+    <a href="/">Dashboard</a> |
 
-{% for vendor in vendors %}
+    <a href="/alerts">Alerts</a> |
 
-<tr>
-<td>{{ vendor.vendor_id }}</td>
-<td>{{ vendor.vendor_name }}</td>
-<td>{{ vendor.risk_level }}</td>
-</tr>
+    <a href="/reports">Reports</a>
 
-{% endfor %}
+</div>
+
+<!-- Dashboard Cards -->
+<div class="cards">
+
+    <div class="card">
+        <h2>{{ total }}</h2>
+        <p>Total Vendors</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ high }}</h2>
+        <p>High Risk</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ medium }}</h2>
+        <p>Medium Risk</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ low }}</h2>
+        <p>Low Risk</p>
+    </div>
+
+</div>
+
+<!-- Search + Filter -->
+<div style="margin:20px;">
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Vendor">
+
+    <select name="risk">
+
+        <option value="">All Risks</option>
+
+        <option value="LOW">LOW</option>
+
+        <option value="MEDIUM">MEDIUM</option>
+
+        <option value="HIGH">HIGH</option>
+
+    </select>
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+</div>
+
+<!-- Risk Chart -->
+<h2 style="margin-left:20px;">
+    Risk Distribution
+</h2>
+
+<img
+    src="{{ url_for('static', filename='risk_chart.png') }}"
+    width="400"
+    style="margin-left:20px;">
+
+<br><br>
+
+<!-- Vendor Table -->
+<table>
+
+    <tr>
+
+        <th>Vendor ID</th>
+        <th>Vendor Name</th>
+        <th>Risk Level</th>
+        <th>Action</th>
+
+    </tr>
+
+    {% for vendor in vendors %}
+
+    <tr>
+
+        <td>{{ vendor.vendor_id }}</td>
+
+        <td>{{ vendor.vendor_name }}</td>
+
+        <td>
+
+            {% if vendor.risk_level == "HIGH" %}
+                <span class="high">HIGH</span>
+
+            {% elif vendor.risk_level == "MEDIUM" %}
+                <span class="medium">MEDIUM</span>
+
+            {% else %}
+                <span class="low">LOW</span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            <a href="/vendor/{{ vendor.vendor_id }}">
+                View Details
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
 
 </table>
 

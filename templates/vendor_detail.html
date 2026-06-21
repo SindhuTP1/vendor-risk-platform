@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Vendor Profile</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h1>Vendor Profile</h1>
+
+</div>
+
+<div class="card">
+
+<h2>{{ vendor.vendor_name }}</h2>
+
+<p><b>Vendor ID:</b> {{ vendor.vendor_id }}</p>
+
+<p><b>Category:</b> {{ vendor.category }}</p>
+
+<p><b>Risk Score:</b> {{ vendor.risk_score }}</p>
+
+<p><b>Risk Level:</b> {{ vendor.risk_level }}</p>
+
+<p><b>Data Sensitivity:</b> {{ vendor.data_sensitivity }}</p>
+
+<p><b>Financial Rating:</b> {{ vendor.financial_rating }}</p>
+
+<p><b>Contract End:</b> {{ vendor.contract_end_date }}</p>
+
+<p><b>SOC2:</b> {{ vendor.soc2_type2 }}</p>
+
+<p><b>ISO27001:</b> {{ vendor.iso27001 }}</p>
+
+<p><b>GDPR DPA:</b> {{ vendor.gdpr_dpa }}</p>
+
+</div>
+
+<br>
+
+<a href="/">Back To Dashboard</a>
+
+</body>
+
+</html>

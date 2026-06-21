@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Compliance</title>
+<title>Alerts</title>
 
 <link rel="stylesheet"
 href="{{ url_for('static',
@@ -15,7 +15,7 @@ filename='style.css') }}">
 
 <div class="header">
 
-<h1>Compliance Dashboard</h1>
+<h1>Alerts Dashboard</h1>
 
 </div>
 
@@ -23,10 +23,8 @@ filename='style.css') }}">
 
 <tr>
 
-<th>Vendor ID</th>
-<th>Name</th>
-<th>SOC2</th>
-<th>ISO27001</th>
+<th>Vendor</th>
+<th>Contract End Date</th>
 
 </tr>
 
@@ -34,13 +32,9 @@ filename='style.css') }}">
 
 <tr>
 
-<td>{{ vendor.vendor_id }}</td>
-
 <td>{{ vendor.vendor_name }}</td>
 
-<td>{{ vendor.soc2_type2 }}</td>
-
-<td>{{ vendor.iso27001 }}</td>
+<td>{{ vendor.contract_end_date }}</td>
 
 </tr>
 

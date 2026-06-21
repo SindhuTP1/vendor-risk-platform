@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>VendorShield - Compliance Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>VendorShield Compliance Dashboard</h1>
+</div>
+
+<!-- Navigation Menu -->
+<div style="padding:15px; background:#f0f0f0;">
+
+    <a href="/">Dashboard</a> |
+
+    <a href="/compliance">Compliance</a> |
+
+    <a href="/alerts">Alerts</a> |
+
+    <a href="/reports">Reports</a>
+
+</div>
+
+<br>
+
+<div class="card">
+
+    <h2>Vendor Compliance Monitoring</h2>
+
+    <p>
+        Monitor vendor certifications and regulatory compliance.
+    </p>
+
+</div>
+
+<br>
+
+<table>
+
+    <tr>
+
+        <th>Vendor ID</th>
+
+        <th>Vendor Name</th>
+
+        <th>SOC2 Type II</th>
+
+        <th>ISO27001</th>
+
+        <th>GDPR DPA</th>
+
+        <th>Status</th>
+
+    </tr>
+
+    {% for vendor in vendors %}
+
+    <tr>
+
+        <td>{{ vendor.vendor_id }}</td>
+
+        <td>{{ vendor.vendor_name }}</td>
+
+        <td>
+
+            {% if vendor.soc2_type2 %}
+                ✅ Available
+            {% else %}
+                ❌ Missing
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if vendor.iso27001 %}
+                ✅ Available
+            {% else %}
+                ❌ Missing
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if vendor.gdpr_dpa %}
+                ✅ Available
+            {% else %}
+                ❌ Missing
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if vendor.soc2_type2 and vendor.iso27001 and vendor.gdpr_dpa %}
+
+                <span class="low">
+                    COMPLIANT
+                </span>
+
+            {% else %}
+
+                <span class="high">
+                    NON-COMPLIANT
+                </span>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<br>
+
+<a href="/">⬅ Back to Dashboard</a>
+
+<hr>
+
+<center>
+
+    VendorShield © 2026
+
+</center>
+
+</body>
+
+</html>
