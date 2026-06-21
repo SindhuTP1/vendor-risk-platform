@@ -14,13 +14,20 @@ for _, row in df.iterrows():
 
         days_left = (contract_end - today).days
 
-        if days_left <= 60:
+        if days_left < 0:
+            alerts.append(
+                f"{row['vendor_id']} Contract EXPIRED {-days_left} days ago"
+            )
+
+        elif days_left <= 60:
             alerts.append(
                 f"{row['vendor_id']} Contract expiring in {days_left} days"
             )
 
     except:
         pass
+
+print("Total Alerts:", len(alerts))
 
 for alert in alerts[:20]:
     print(alert)
